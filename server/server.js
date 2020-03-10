@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const port = process.env.PORT
-const passport = require('passport');
-const cors = require('cors');
+const passport = require('passport')
+const cors = require('cors')
 require('./db/db.js')
 
 const allowedOrigins = ['http://localhost:3000']
@@ -25,14 +25,18 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(passport.initialize())
 
-const actionRoutes = require('./routes/action')
+const userRoutes = require('./routes/user')
+const cardRoutes = require('./routes/card')
 const authRoutes = require('./routes/auth')
 
 // * Middleware
-app.use(express.json());
+app.use(express.json())
 
 // * Route Middleware
-app.use('/api/action', actionRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/card', cardRoutes)
 
 app.listen(port, (req, res) => console.log('Listening on port', port))
+
+

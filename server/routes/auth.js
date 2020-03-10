@@ -23,6 +23,8 @@ router.post('/register', async (req, res) => {
     try {
         const savedUser = await user.save()
         savedUser.password = undefined
+        const token = jwt.sign({_id: savedUser._id}, process.env.ACCESS_TOKEN_SECRET)
+        res.header = ('auth-token', token).send(data = {token, userData: savedUser})
         res.send(savedUser)
     } catch (error) {
         res.status(400).send(error)
@@ -40,7 +42,7 @@ router.post('/login', async (req, res) => {
     if(!validPassword) return res.status(400).send('Incorrect password')
 
     const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET)
-    res.header('auth-token', token).send(token)
+    res.header = ('auth-token', token).send(data = {token, userData: user})
 
 })
 
