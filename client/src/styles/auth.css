@@ -1,0 +1,8 @@
+#auth-modal {
+    width: 30rem;
+    padding: 3rem;
+}
+
+#auth-modal button {
+    width: 100%;
+}
