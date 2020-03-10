@@ -1,24 +1,47 @@
 import React from 'react'
-import {Modal, Form, Button, Divider} from 'semantic-ui-react'
+import {useSelector} from 'react-redux'
+import {Modal, Form, Button, Input} from 'semantic-ui-react'
+import Authenticate from '../hooks/authenticate'
 import '../styles/auth.css'
 
 const Auth = () => {
+    const route = useSelector(state => state.auth.route)
+    const {handleInputChange, handleSubmit} = Authenticate()
     return (
-        <Modal open={true} id="auth-modal">
+        <Modal open={true} closeIcon id="auth-modal">
             <Modal.Header>Authenticate</Modal.Header>
             <Modal.Content>
-                <Form>
+                <Form onSubmit={(e) => handleSubmit(e, route)}>
                     <Form.Field>
                         <label>Username</label>
-                        <input type="text" name="username"/>
+                        <Input 
+                        focus 
+                        icon="user" 
+                        iconPosition="left" 
+                        type="text" 
+                        name="username"
+                        onChange={handleInputChange}
+                    />
                     </Form.Field>
                     <Form.Field>
                         <label>Email</label>
-                        <input type="email" name="email"/>
+                        <Input 
+                        icon="mail" 
+                        iconPosition="left" 
+                        type="email" 
+                        name="email"
+                        onChange={handleInputChange}
+                    />
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input type="password" name="password"/>
+                        <Input 
+                        icon="asterisk" 
+                        iconPosition="left" 
+                        type="password" 
+                        name="password"
+                        onChange={handleInputChange}
+                    />
                     </Form.Field>
                     <Button>Submit</Button>
                 </Form>

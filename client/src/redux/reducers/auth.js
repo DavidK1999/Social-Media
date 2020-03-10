@@ -1,14 +1,14 @@
 import * as AuthTypes from '../actionTypes/auth'
 
 const initialState = {
-    formAction: '',
+    route: '',
     loggedIn: false
 }
 
-// export default function Auth(state=initialState, action) {
-//     switch(action.type) {
-//         case AuthTypes.
-//     }
-// }
+export default function Auth(state=initialState, action) {
+    switch(action.type) {
+        
+    }
+}
 
 
