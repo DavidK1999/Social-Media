@@ -8,7 +8,7 @@ const Auth = () => {
     const route = useSelector(state => state.auth.route)
     const {handleInputChange, handleSubmit} = Authenticate()
     return (
-        <Modal open={true} closeIcon id="auth-modal">
+        <Modal open={route} closeIcon id="auth-modal">
             <Modal.Header>Authenticate</Modal.Header>
             <Modal.Content>
                 <Form onSubmit={(e) => handleSubmit(e, route)}>

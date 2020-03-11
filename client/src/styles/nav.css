@@ -1,0 +1,19 @@
+#nav {
+    width: 100%;
+    height: 100vh;
+}
+
+#nav .item {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 22rem;
+    margin-left: auto;
+    padding: 1rem;
+    font-size: 1.4rem;
+}
+
+#nav .item .icon {
+    padding-right: 2.2rem;
+}
