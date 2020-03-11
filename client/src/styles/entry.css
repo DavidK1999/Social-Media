@@ -102,6 +102,7 @@
 
 #modal-buttons button {
     margin: 2%;
+    width: 100%;
 }
 
 #register-button {

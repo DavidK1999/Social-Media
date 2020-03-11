@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import Authenticate from '../hooks/authenticate'
 import {Grid, Form, Input, Button, Icon, Header, Menu} from 'semantic-ui-react'
 import '../styles/entry.css'
-import {authenticate} from '../redux/actions/auth'
+import {authenticate, toggle} from '../redux/actions/auth'
 import {useDispatch} from 'react-redux'
 
 const Entry = () => {
@@ -61,8 +62,8 @@ const Entry = () => {
 
             <div id="modal-buttons">
                 <p>Join Community Cards today.</p>
-                <Button id="register-button">Register</Button>
-                <Button id="login-button">Log in</Button>
+                <Link to="/register"><Button id="register-button">Register</Button></Link>
+                <Link to="/login"><Button id="login-button">Log in</Button></Link>
             </div>
             </Grid.Row>
         </Grid.Column>

@@ -1,14 +1,13 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React,  {useState} from 'react'
 import {Modal, Form, Button, Input} from 'semantic-ui-react'
 import Authenticate from '../hooks/authenticate'
 import '../styles/auth.css'
 
 const Auth = () => {
-    const route = useSelector(state => state.auth.route)
+    const route = window.location.pathname.substring(1)
     const {handleInputChange, handleSubmit} = Authenticate()
     return (
-        <Modal open={true} closeIcon id="auth-modal">
+        <Modal open={true} id="auth-modal">
             <Modal.Content>
                 <Form onSubmit={(e) => handleSubmit(e, route)}>
                     <h3>Create Your Account</h3>
