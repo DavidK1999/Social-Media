@@ -17,7 +17,7 @@ const Login = () => {
                 <Input 
                     focus 
                     type="email" 
-                    name="Email"
+                    name="email"
                     placeholder="email"
                     onChange={handleInputChange}
                 />
@@ -26,7 +26,7 @@ const Login = () => {
                 <Input 
                     focus 
                     type="password" 
-                    name="Password"
+                    name="password"
                     placeholder="password"
                     onChange={handleInputChange}
                 />
