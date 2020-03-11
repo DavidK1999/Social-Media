@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Authenticate from '../hooks/authenticate'
 import {Grid, Form, Input, Button, Icon, Header, Menu} from 'semantic-ui-react'
 import '../styles/entry.css'
+import {authenticate} from '../redux/actions/auth'
+import {useDispatch} from 'react-redux'
 
 const Entry = () => {
+    const [route, setRoute] = useState()
+    const dispatch = useDispatch()
+    const {handleInputChange, handleSubmit} = Authenticate()
+
     return (
         <Grid columns={2} divided id="entry-grid">
         <Grid.Column id="left-entry-column">
@@ -18,15 +25,16 @@ const Entry = () => {
                 name="Join the conversation."/>
             </Menu>
         </Grid.Column>
-        <Grid.Column>
+        <Grid.Column id="right-entry-column">
             <Grid.Row>
-                <Form id="entry-form">
+                <Form id="entry-form" onSubmit={(e) => handleSubmit(e, route)}>
                     <Form.Field>
                         <Input 
                         focus 
                         placeholder="Email"
                         type="email" 
                         name="email"
+                        onChange={handleInputChange}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -35,10 +43,11 @@ const Entry = () => {
                         placeholder="Password"
                         type="password" 
                         name="password"
+                        onChange={handleInputChange}
                         />
                     </Form.Field>
                     <Form.Field>
-                        <Button>Log in</Button>
+                        <Button onClick={() => setRoute('login')}>Log in</Button>
                     </Form.Field>
                 </Form>
             </Grid.Row>
@@ -57,6 +66,14 @@ const Entry = () => {
             </div>
             </Grid.Row>
         </Grid.Column>
+        <Grid.Row id="footer">
+            <h6>About</h6>
+            <h6>About</h6>
+            <h6>About</h6>
+            <h6>About</h6>
+            <h6>About</h6>
+            <h6>About</h6>
+        </Grid.Row>
         </Grid>
     )
 }

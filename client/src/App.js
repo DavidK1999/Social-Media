@@ -8,9 +8,9 @@ import './styles/base.css'
 function App() {
   return (
     <>
-      <Entry/>
-      {/* <Auth/>
-      <Layout/> */}
+      {/* <Entry/> */}
+       <Auth/>
+      {/* <Layout/> */}
     </>
 
   );

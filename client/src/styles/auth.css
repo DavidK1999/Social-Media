@@ -1,8 +1,46 @@
 #auth-modal {
-    width: 30rem;
-    padding: 3rem;
+    width: 43rem;
+    height: 45rem;
+    border-radius: 2.5%;
+    background-color: #15202b;
 }
 
+#auth-modal .header {
+    background-color: #15202b;
+}
+
+#auth-modal .content {
+    background-color: #15202b;
+    height: 100%;
+}
+
+
+
+#auth-modal .content > form {
+    background-color: #15202b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;
+    
+}
+
+#auth-modal h3 {
+    margin: 0px;
+    color: white;
+    font-size: 1.6rem;
+}
+
+#auth-modal input {
+    background-color: #192734;
+    color: #1d8d98;
+    height: 4rem;
+    border-bottom: 1px solid #1a7af2;
+}
+
+#auth-modal input::placeholder {
+    color: #1a7af2;
+}
 #auth-modal button {
     width: 100%;
 }
