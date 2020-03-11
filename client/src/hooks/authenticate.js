@@ -15,6 +15,7 @@ const Authenticate = () => {
        console.log(inputs)
        e.preventDefault()
        dispatch(authenticate(route, inputs))
+       
     }
 
     return {handleInputChange, handleSubmit}

@@ -22,6 +22,7 @@ export const authenticate = (route, data) => {
             })
             const parsedResponse = await response.json()
             console.log(parsedResponse)
+            window.sessionStorage.token = parsedResponse
             // dispatch({type: AuthActionTypes.AUTHENTICATE, value: parsedResponse.data.userData})
             // window.sessionStorage.token = parsedResponse.data.token
         } catch (error) {

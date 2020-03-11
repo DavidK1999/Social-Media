@@ -6,13 +6,13 @@ const passport = require('passport')
 const cors = require('cors')
 require('./db/db.js')
 
-const allowedOrigins = ['http://localhost:3000']
+const allowedOrigins = ['http://localhost:3000/']
 
 app.use(cors({
     origin: function(origin, callback) {
         if(!origin) return callback(null, true)
         
-        if(allowedOrigins.indexOf(origin) === -1) {
+        if(allowedOrigins.indexOf(origin) !== -1) {
             let msg = 'Not allowed by cors'
             return callback(new Error(msg), false)
         }
