@@ -12,10 +12,7 @@ export default function Auth(state=initialState, action) {
             return {...state, route: state.route = action.route}
         
         case AuthTypes.AUTHENTICATE:
-            return {
-                ...state, route: state.route = '',
-                ...state, loggedIn: state.loggedIn = true
-            }
+            return {...state, loggedIn: state.loggedIn = true}
         
         default:
             return state

@@ -1,4 +1,5 @@
 import * as AuthActionTypes from '../actionTypes/auth'
+import { useHistory } from 'react-router-dom'
 
 
 export const toggle = route => {
@@ -11,8 +12,6 @@ export const toggle = route => {
 export const authenticate = (route, data) => {
     return async dispatch => {
         try {
-            console.log(route)
-            console.log(data)
             const response = await fetch(`http://localhost:8000/api/auth/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -21,10 +20,9 @@ export const authenticate = (route, data) => {
                 }
             })
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
-            window.sessionStorage.token = parsedResponse
-            // dispatch({type: AuthActionTypes.AUTHENTICATE, value: parsedResponse.data.userData})
-            // window.sessionStorage.token = parsedResponse.data.token
+            if(parsedResponse.status === 200) {
+               dispatch({type: AuthActionTypes.AUTHENTICATE})
+            }
         } catch (error) {
             console.log('Authenticate Error', error)
         }
