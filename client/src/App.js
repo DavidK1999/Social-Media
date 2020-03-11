@@ -10,9 +10,9 @@ import './styles/base.css'
 function App() {
   return (
     <Router>
-      <Route exact path="/" component={Entry}/>
+      <Route exact path={["/", "/register"]} component={Entry}/>
       <Route path="/register" component={Auth}/>
-      <Route path="/login" component={Login}/>
+      <Route exact path="/login" component={Login}/>
     </Router>
 
   );
