@@ -1,13 +1,15 @@
 import React from 'react'
 import Nav from './Nav'
+import Post from '../hooks/post'
 import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
 import '../styles/layout.css'
 
 
 const Layout = () => {
+    const {handleInputChange, handleSubmit} = Post()
+
     return (
         <Grid columns={3} divided id="layout-grid">
-            <Grid.Row>
             <Grid.Column id="left-column">
                 <Nav/>
             </Grid.Column>
@@ -18,9 +20,14 @@ const Layout = () => {
                 
                 <Grid.Row id="home-menu">
                     <Icon name="user circle outline"/> 
-                    <Form>
+                    <Form onSubmit={(e) => handleSubmit(e, '/post')}>
                         <Form.Field>
-                            <Input type="text" name="body" placeholder="What's happening?"/>
+                            <Input 
+                            type="text" 
+                            name="body" 
+                            placeholder="What's happening?"
+                            onChange={handleInputChange}
+                            />
                         </Form.Field>
                         <Button>Submit</Button>
                     </Form>
@@ -34,7 +41,6 @@ const Layout = () => {
             <Grid.Column>
                 <Image src='/images/wireframe/media-paragraph.png' />
             </Grid.Column>
-            </Grid.Row>
       </Grid>
     );
 }

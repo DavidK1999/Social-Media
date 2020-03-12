@@ -1,5 +1,6 @@
 #layout-grid {
     color: white;
+    height: 100vh;
     
 }
 
@@ -12,10 +13,11 @@
     font-weight: bold;
     margin: 5%;
     margin-left: auto;
+    width: 40%;
 }
 
 #left-column .item:first-child {
-    margin-top: 0%;
+    margin-top: 2%;
 }
 
 #center-column {
@@ -59,11 +61,17 @@
     width: 100%;
 }
 
+#home-menu .field {
+    margin: 0px;
+}
+
 #home-menu form input {
     background-color:#15202b;
     color: #919797;
     font-size: 1.2rem;
     padding: 0px;
+    height: 100%;
+    border: none;
 }
 
 #home-menu form input:focus {
@@ -77,6 +85,7 @@
     border-radius: 0px;
     background-color: #19618f;
     color: white;
+    margin-top: 0.8rem;
 }
 
 #home-intro {

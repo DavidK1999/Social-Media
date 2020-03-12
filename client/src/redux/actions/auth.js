@@ -17,10 +17,12 @@ export const authenticate = (route, data) => {
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type' : 'application/json',
+                    // 'auth-header': window.sessionStorage.token
                 }
             })
             const parsedResponse = await response.json()
             if(parsedResponse.status === 200) {
+                window.sessionStorage.token = parsedResponse.token
                dispatch({type: AuthActionTypes.AUTHENTICATE})
             }
         } catch (error) {

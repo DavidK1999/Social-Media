@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
     try {
         const savedUser = await user.save()
         savedUser.password = undefined
-        const token = jwt.sign({_id: savedUser._id}, process.env.ACCESS_TOKEN_SECRET)
+        const token = jwt.sign({username: savedUser.username}, process.env.ACCESS_TOKEN_SECRET)
         res.header('auth-token', token).send({token, status: 200})
     } catch (error) {
         res.status(400)
@@ -37,8 +37,8 @@ router.post('/login', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if(!validPassword) return res.status(400).send('Incorrect password')
 
-    const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET)
-
+    const token = jwt.sign({username: user.username}, process.env.ACCESS_TOKEN_SECRET)
+    
     res.header('auth-token', token).send({token, status: 200})
 
 })
