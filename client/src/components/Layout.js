@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
-import {Grid, Image} from 'semantic-ui-react'
+import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
 import '../styles/layout.css'
 
 
@@ -12,7 +12,24 @@ const Layout = () => {
                 <Nav/>
             </Grid.Column>
             <Grid.Column id="center-column">
-                <Image src='/images/wireframe/media-paragraph.png' />
+                <Grid.Row id="home-row">
+                    Home
+                </Grid.Row>
+                
+                <Grid.Row id="home-menu">
+                    <Icon name="user circle outline"/> 
+                    <Form>
+                        <Form.Field>
+                            <Input type="text" name="body" placeholder="What's happening?"/>
+                        </Form.Field>
+                        <Button>Submit</Button>
+                    </Form>
+                </Grid.Row>
+                
+                <Grid.Row id="home-intro">
+                    <h3>Welcome to Community Cards</h3>
+                    <p>This is a twitter clone that captures the essentials of twitter</p>
+                </Grid.Row>
             </Grid.Column>
             <Grid.Column>
                 <Image src='/images/wireframe/media-paragraph.png' />

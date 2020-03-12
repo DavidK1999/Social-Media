@@ -1,5 +1,6 @@
 #layout-grid {
     color: white;
+    
 }
 
 #left-column {
@@ -7,6 +8,78 @@
     height: 100vh;
 }
 
+#left-column .item {
+    font-weight: bold;
+    margin: 5%;
+    margin-left: auto;
+}
+
+#left-column .item:first-child {
+    margin-top: 0%;
+}
+
 #center-column {
     padding: 0px;
+    border-left: 1px solid #38444d;
+    border-right: 1px solid #38444d;
+}
+
+#center-column .row {
+    border-top: 1px solid #38444d;
+}
+
+#center-column #home-row {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-top: none;
+}
+
+#home-menu {
+    height: 8rem;
+    padding: 2%;
+    font-size: 3rem;
+    font-weight: bold;
+    border-bottom: 10px solid #253341;
+    display: flex;
+    align-items: center;
+    padding-bottom: 3rem;
+    position: relative;
+}
+
+#home-menu .icon {
+    display: flex;
+    align-items: center;
+}
+
+#home-menu form {
+    width: 100%;
+}
+
+#home-menu form input {
+    background-color:#15202b;
+    color: #919797;
+    font-size: 1.2rem;
+    padding: 0px;
+}
+
+#home-menu form input:focus {
+    border: none;
+    color: #bdc1bf;
+}
+
+#home-menu form button {
+    position: absolute;
+    right: 0px;
+    border-radius: 0px;
+    background-color: #19618f;
+    color: white;
+}
+
+#home-intro {
+    text-align: center;
+    padding-top: 8%;
 }
