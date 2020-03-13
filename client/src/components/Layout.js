@@ -2,8 +2,9 @@ import React, {useEffect} from 'react'
 import Nav from './Nav'
 import Post from '../hooks/post'
 import CardList from './CardList'
+import Feed from './Feed'
 import PersonalCardList from './PersonalCardList'
-import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
+import {Grid, Icon, Form, Input, Button} from 'semantic-ui-react'
 import {Route} from 'react-router-dom'
 import '../styles/layout.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -46,7 +47,8 @@ const Layout = () => {
                     </Form>
                 </Grid.Row>
                 
-                {cards.length === 0 
+                {
+                    cards.length === 0 
                 ?
                     <Grid.Row id="home-intro">
                         <h3>Welcome to Community Cards</h3>
@@ -55,11 +57,9 @@ const Layout = () => {
                 : 
                     null
                 }
+                
+                <Route exact path={["/home", "/explore"]} component={Feed}/>
 
-                <Route exact path="/home" component={PersonalCardList}/>
-                <Route exact path="/explore" component={CardList}/>
-
-            <button onClick={()=>console.log(filter)}></button>
             
             </Grid.Column>
             <Grid.Column id="layout-right-column">
