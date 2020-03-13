@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import{getPersonalPosts} from '../redux/actions/card'
-import {Grid} from 'semantic-ui-react'
+import {Grid, Icon} from 'semantic-ui-react'
 import {useSelector} from 'react-redux'
 import '../styles/card.css'
 
@@ -17,7 +17,15 @@ const PersonalCardList = () => {
     const cardList = cards && cards.map((card, i) => {
         return(
             <Grid.Row id="card-row">
-                Personal
+                <Icon name="user circle"/>
+                <div className="card-content">
+                    <p>David Kalina @insane 18m</p>
+                    <p>Hey guys, this is my first post and I think this app is truly insane</p>
+                    <div className="card-menu">
+                        <Icon name="heart outline"/>
+                        <Icon name="comment outline"/>
+                    </div>
+                </div>
             </Grid.Row>
         )
     })

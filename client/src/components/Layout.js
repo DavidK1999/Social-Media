@@ -62,7 +62,7 @@ const Layout = () => {
             <button onClick={()=>console.log(filter)}></button>
             
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column id="layout-right-column">
             </Grid.Column>
       </Grid>
     );
