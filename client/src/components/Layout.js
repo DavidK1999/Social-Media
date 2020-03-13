@@ -14,7 +14,6 @@ const Layout = () => {
     
     useEffect(() => {
         dispatch(getPosts())
-        console.log(cards)
     }, [cards.length])
 
     return (

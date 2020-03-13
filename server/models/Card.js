@@ -5,6 +5,7 @@ const cardSchema = mongoose.Schema({
     tags: [String],
     user_object: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
     user_username: {type: String, required: true},
+    verified: {type: Boolean, default: false},
     timestamp: {type: Date, default: Date.now},
     upvotes: {type: [String]}
 })

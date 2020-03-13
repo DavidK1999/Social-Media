@@ -6,6 +6,11 @@ const Card = require('../models/Card')
 
 router.get('/all',  verify , async (req, res) => {
     allCards = await Card.find()
+    for(let card of allCards) {
+        if(req.user.username === card.user_username) {
+            card.verified = true
+        }
+    }
     res.send(allCards)
 })
 
