@@ -14,6 +14,7 @@ const Feed = () => {
     useEffect(() => {
         if(explore) dispatch(getPosts())
         if(home) dispatch(getPersonalPosts())
+        console.log(cards.length)
     }, [cards.length])
     
     const cardList = cards && cards.map((card, i) => {

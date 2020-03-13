@@ -17,11 +17,6 @@ const Layout = () => {
     const cards = useSelector(state => state.card.cards)
     const filter = useSelector(state => state.nav.filter)
     
-    useEffect(() => {
-        dispatch(getPosts())
-        console.log(cards)
-    }, [cards.length])
-
     return (
         <Grid columns={3} divided id="layout-grid">
             <Grid.Column id="left-column">
