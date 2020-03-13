@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Nav from './Nav'
 import Post from '../hooks/post'
 import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
 import '../styles/layout.css'
+import { useDispatch, useSelector } from 'react-redux'
+import {getPosts, post} from '../redux/actions/card'
 
 
 const Layout = () => {
+    const dispatch = useDispatch()
     const {handleInputChange, handleSubmit} = Post()
+    const cards = useSelector(state => state.card.cards)
+    
+    useEffect(() => {
+        dispatch(getPosts())
+        console.log(cards)
+    }, [cards.length])
 
     return (
         <Grid columns={3} divided id="layout-grid">
