@@ -13,6 +13,7 @@ const Layout = () => {
     const dispatch = useDispatch()
     const {handleInputChange, handleSubmit} = Post()
     const cards = useSelector(state => state.card.cards)
+    const filter = useSelector(state => state.nav.filter)
     
     useEffect(() => {
         dispatch(getPosts())
@@ -49,8 +50,10 @@ const Layout = () => {
                     <p>This is a twitter clone that captures the essentials of twitter</p>
                 </Grid.Row>
 
-                <CardList/>
-                {/* <PersonalCardList/> */}
+            {filter === 'personal' ? <PersonalCardList/> : <CardList/>}
+
+            <button onClick={()=>console.log(filter)}></button>
+            
             </Grid.Column>
             <Grid.Column>
             </Grid.Column>

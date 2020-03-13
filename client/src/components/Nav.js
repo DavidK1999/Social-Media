@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {filterFetch} from '../redux/actions/nav'
 import {Menu, Button} from 'semantic-ui-react'
 import '../styles/nav.css'
 
 
 const Nav = () => {
+    const dispatch = useDispatch()
     const [activeItem, setActiveItem] = useState({})
-    const handleItemClick = name => setActiveItem(name)
+    
+    const handleItemClick = (name, filter) => {
+        setActiveItem(name)
+        dispatch(filterFetch(filter))
+    }
+    
     return (
         <Menu vertical secondary id="nav">
             <Menu.Item
@@ -17,7 +25,7 @@ const Nav = () => {
             icon="home"
             active={activeItem === 'home'}
             content="Home"
-            onClick={() => handleItemClick('home')}
+            onClick={() => handleItemClick('home', 'personal')}
             />
             
             <Menu.Item 
@@ -25,14 +33,14 @@ const Nav = () => {
             icon="globe"
             active={activeItem === 'explore'}
             content="Explore"
-            onClick={() => handleItemClick('explore')}
+            onClick={() => handleItemClick('explore', 'global')}
             />
             <Menu.Item 
             name="profile"
             icon="user circle"
             active={activeItem === 'profile'}
             content="Profile"
-            onClick={() => handleItemClick('profile')}
+            onClick={() => handleItemClick('profile', '')}
             />
             
             <Menu.Item 
@@ -40,7 +48,7 @@ const Nav = () => {
             icon="sign out"
             active={activeItem === 'signout'}
             content="Signout"
-            onClick={() => handleItemClick('signout')}
+            onClick={() => handleItemClick('signout', '')}
             />
 
             <Menu.Item
@@ -48,7 +56,7 @@ const Nav = () => {
             icon="plus"
             active={activeItem === 'create'}
             content="Create a Card"
-            onClick={() => handleItemClick('create')}
+            onClick={() => handleItemClick('create', '')}
 
             />
             <button onClick={()=>console.log(activeItem)}></button>
