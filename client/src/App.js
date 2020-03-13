@@ -17,6 +17,7 @@ function App() {
       <Route path="/register" component={Auth}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/home" component={Layout}/>
+      <Route exact path="/explore" component={Layout}/>
       {loggedIn ? <Redirect to="/home"/> : null}
     </Router>
 

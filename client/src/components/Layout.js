@@ -4,6 +4,7 @@ import Post from '../hooks/post'
 import CardList from './CardList'
 import PersonalCardList from './PersonalCardList'
 import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
+import {Route} from 'react-router-dom'
 import '../styles/layout.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {getPosts} from '../redux/actions/card'
@@ -45,12 +46,18 @@ const Layout = () => {
                     </Form>
                 </Grid.Row>
                 
-                <Grid.Row id="home-intro">
-                    <h3>Welcome to Community Cards</h3>
-                    <p>This is a twitter clone that captures the essentials of twitter</p>
-                </Grid.Row>
+                {cards.length === 0 
+                ?
+                    <Grid.Row id="home-intro">
+                        <h3>Welcome to Community Cards</h3>
+                        <p>This is a twitter clone that captures the essentials of twitter</p>
+                    </Grid.Row>
+                : 
+                    null
+                }
 
-            {filter === 'personal' ? <PersonalCardList/> : <CardList/>}
+                <Route exact path="/home" component={PersonalCardList}/>
+                <Route exact path="/explore" component={CardList}/>
 
             <button onClick={()=>console.log(filter)}></button>
             
