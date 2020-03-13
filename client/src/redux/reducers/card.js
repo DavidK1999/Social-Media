@@ -9,7 +9,7 @@ export default function Card(state=initialState, action) {
         case CardActionTypes.READ:
             return {...state, cards: state.cards = action.value}
         case CardActionTypes.POST:
-            return {...state, cards: state.cards = {...action.value}}
+            return {...state, cards: state.cards = [...state.cards, action.value]}
 
         default:
             return state

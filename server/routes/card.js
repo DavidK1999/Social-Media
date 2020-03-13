@@ -4,8 +4,9 @@ const verify = require('../verifyToken')
 const Card = require('../models/Card')
 
 
-router.get('/all',  verify , async (req, res) => {
+router.get('/all', verify , async (req, res) => {
     allCards = await Card.find()
+    console.log(allCards)
     for(let card of allCards) {
         if(req.user.username === card.user_username) {
             card.verified = true

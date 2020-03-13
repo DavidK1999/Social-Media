@@ -28,6 +28,7 @@ export const getPosts = () => {
                 }
             })
             const parsedResponse = await response.json()
+            console.log(parsedResponse)
             dispatch({type: CardActionTypes.READ, value: parsedResponse})
         } catch (error) {
             console.log(error)
