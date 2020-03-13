@@ -1,15 +1,12 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {filterFetch} from '../redux/actions/nav'
-import {Menu, Button} from 'semantic-ui-react'
+import {Menu, Icon} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
 import '../styles/nav.css'
 
 
 const Nav = () => {
-    const [activeItem, setActiveItem] = useState({})
-    
-    const handleItemClick = (name, filter) => setActiveItem(name)
     
     return (
         <Menu vertical secondary id="nav">
@@ -17,51 +14,31 @@ const Nav = () => {
             icon="sticky note"
             />
             
-            <NavLink to="/home">
-            <Menu.Item 
-            name="home"
-            icon="home"
-            active={activeItem === 'home'}
-            content="Home"
-            onClick={() => handleItemClick('home')}
-            />
+            <NavLink to="/home" className="item">
+             <Icon name="home"/>
+             Home
             </NavLink>
 
-            <NavLink to="/explore">
-            <Menu.Item 
-            name="explore"
-            icon="globe"
-            active={activeItem === 'explore'}
-            content="Explore"
-            onClick={() => handleItemClick('explore')}
-            />
+            <NavLink to="/explore" className="item">
+                <Icon name="globe"/>
+                Explore
             </NavLink>
             
-            <Menu.Item 
-            name="profile"
-            icon="user circle"
-            active={activeItem === 'profile'}
-            content="Profile"
-            onClick={() => handleItemClick('profile')}
-            />
+            <NavLink to="/profile" className="item">
+                <Icon name="user circle"/>
+                Profile
+            </NavLink>
             
-            <Menu.Item 
-            name="signout"
-            icon="sign out"
-            active={activeItem === 'signout'}
-            content="Signout"
-            onClick={() => handleItemClick('signout')}
-            />
-
-            <Menu.Item
-            name="create"
-            icon="plus"
-            active={activeItem === 'create'}
-            content="Create a Card"
-            onClick={() => handleItemClick('create', '')}
-
-            />
-            <button onClick={()=>console.log(activeItem)}></button>
+            <NavLink to="/logout" className="item">
+                <Icon name="sign out"/>
+                Log out
+            </NavLink>
+            
+            <NavLink to="/create" className="item">
+                <Icon name="plus"/>
+                Create a Card
+            </NavLink>
+            
         </Menu>
     );
 }
