@@ -17,3 +17,11 @@
 #nav .item .icon {
     padding-right: 2.2rem;
 }
+
+#nav .active {
+    color: #1da1f2;
+}
+
+#nav .item:hover {
+    background-color: #192734;
+}

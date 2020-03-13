@@ -11,12 +11,21 @@ const Nav = () => {
             <Menu.Item
             icon="sticky note"
             />
+            
             <Menu.Item 
             name="home"
             icon="home"
-            active={activeItem === 'username'}
+            active={activeItem === 'home'}
             content="Home"
             onClick={() => handleItemClick('home')}
+            />
+            
+            <Menu.Item 
+            name="explore"
+            icon="globe"
+            active={activeItem === 'explore'}
+            content="Explore"
+            onClick={() => handleItemClick('explore')}
             />
             <Menu.Item 
             name="profile"
@@ -42,6 +51,7 @@ const Nav = () => {
             onClick={() => handleItemClick('create')}
 
             />
+            <button onClick={()=>console.log(activeItem)}></button>
         </Menu>
     );
 }

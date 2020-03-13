@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import Nav from './Nav'
 import Post from '../hooks/post'
 import CardList from './CardList'
+import PersonalCardList from './PersonalCardList'
 import {Grid, Image, Icon, Form, Input, Button} from 'semantic-ui-react'
 import '../styles/layout.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -49,9 +50,9 @@ const Layout = () => {
                 </Grid.Row>
 
                 <CardList/>
+                {/* <PersonalCardList/> */}
             </Grid.Column>
             <Grid.Column>
-                <Image src='/images/wireframe/media-paragraph.png' />
             </Grid.Column>
       </Grid>
     );

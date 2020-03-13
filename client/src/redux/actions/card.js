@@ -35,3 +35,22 @@ export const getPosts = () => {
         }
     }
 }
+
+export const getPersonalPosts = () => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/card/personal`, {
+                headers: {
+                    'auth-token' : window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            console.log(parsedResponse)
+            dispatch({type: CardActionTypes.READ, value: parsedResponse})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+

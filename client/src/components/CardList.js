@@ -9,7 +9,7 @@ const CardList = () => {
     const cardList = allCards && allCards.map((card, i) => {
         return(
             <Grid.Row id="card-row">
-                Hey
+                Global
             </Grid.Row>
         )
     })
