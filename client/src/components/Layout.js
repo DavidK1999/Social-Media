@@ -6,7 +6,7 @@ import Profile from './Profile'
 import {Grid} from 'semantic-ui-react'
 import {Route} from 'react-router-dom'
 import '../styles/layout.css'
-import { useDispatch, useSelector } from 'react-redux'
+import {useSelector} from 'react-redux'
 
 
 const Layout = () => {
@@ -18,9 +18,6 @@ const Layout = () => {
                 <Nav/>
             </Grid.Column>
             <Grid.Column id="center-column">
-                <Grid.Row id="home-row">
-                    Home
-                </Grid.Row>
 
                 <Route exact path="/home" component={Home}/>
                 <Route exact path="/profile" component={Profile}/>

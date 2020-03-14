@@ -7,6 +7,10 @@ const Home = () => {
     const {handleInputChange, handleSubmit} = Post()
 
     return (
+        <>
+        <Grid.Row id="home-row">
+            Home
+        </Grid.Row>
         <Grid.Row id="home-menu">
                     <Icon name="user circle outline"/> 
                     <Form onSubmit={(e) => handleSubmit(e, '/post')}>
@@ -22,6 +26,7 @@ const Home = () => {
                     </Form>
                     
         </Grid.Row>
+        </>
     );
 }
  
