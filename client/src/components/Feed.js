@@ -27,11 +27,11 @@ const Feed = () => {
                     <p>{card.user_username}</p>
                     <p>{card.body}</p>
                     <div className="card-menu">
-                    {!card.verified 
+                    {card.upvoted 
                         ?
-                            <Upvote card={card._id}/>
-                        :
                             <Upvoted/>
+                        :
+                            <Upvote card={card._id}/>
                     }
                         <Icon name="comment outline"/>
                     </div>

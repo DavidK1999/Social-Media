@@ -7,7 +7,8 @@ const cardSchema = mongoose.Schema({
     user_username: {type: String, required: true},
     verified: {type: Boolean, default: false},
     timestamp: {type: Date, default: Date.now},
-    upvotes: {type: [String]}
+    upvotes: {type: [String]},
+    upvoted: {type: Boolean, default: false}
 })
 
 module.exports = mongoose.model('Card', cardSchema);
