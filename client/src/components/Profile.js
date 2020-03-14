@@ -1,4 +1,5 @@
 import React from 'react'
+import Feed from './Feed'
 import {NavLink} from 'react-router-dom'
 import {Grid, Image, Icon, Menu} from 'semantic-ui-react'
 import '../styles/profile.css'
@@ -7,7 +8,7 @@ const Profile = () => {
     return (
         <>
         <Grid.Row id="top">
-            <Icon name="arrow left"/>
+            <NavLink to="/home"><Icon name="arrow left"/></NavLink>
             <div>
                 <h3>David Kalina</h3>
                 <small> 0 posts</small>
@@ -25,10 +26,13 @@ const Profile = () => {
                 <span className="num">0</span> Following <span className="num">0</span> Followers
                 </div>
             </div>
-            <Menu pointing secondary>
-            <NavLink to="#">Cards</NavLink>
-            <NavLink to="#">Likes</NavLink>
+            <Menu pointing secondary id="profile-nav">
+            <NavLink to="/profile">Cards</NavLink>
+            <NavLink to="/likes">Likes</NavLink>
             </Menu>
+        </Grid.Row>
+        <Grid.Row>
+            <Feed/>
         </Grid.Row>
         </>
     );

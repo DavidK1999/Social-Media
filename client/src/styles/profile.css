@@ -64,13 +64,18 @@
 #information .menu {
     display: flex;
     justify-content: center;
-    
+    color: #1da1f2;
 }
 
 #information a {
     font-size: 1.2rem;
     color: #8899a6;
     padding: 0 4rem;
+}
+
+#profile-nav .active {
+    color: #1da1f2;
+    border-bottom: 1px solid #1da1f2;
 }
 
 

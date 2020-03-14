@@ -9,11 +9,11 @@ const Feed = () => {
     const cards = useSelector(state => state.card.cards)
     const path = window.location.pathname
     const explore = path ==='/explore'
-    const home = path ==='/home'
+    const personal = path ==='/home' || path ==="/profile"
 
     useEffect(() => {
         if(explore) dispatch(getPosts())
-        if(home) dispatch(getPersonalPosts())
+        if(personal) dispatch(getPersonalPosts())
     }, [])
     
     
