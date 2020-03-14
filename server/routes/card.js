@@ -22,7 +22,7 @@ router.get('/personal', verify , async (req, res) => {
             card.verified = true
         }
     }
-    console.log(personalCards)
+    console.log('PERSONAL')
     res.send(personalCards)
 })
 

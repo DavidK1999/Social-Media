@@ -1,3 +1,24 @@
+#top {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-bottom: 0;
+    height: 4.5rem;
+}
+
+#top i {
+    color: #1da1f2;
+    font-size: 1.3rem;
+}
+
+#top > div {
+    margin-left: 4%;
+}
+
+#top h3, small {
+    margin: 0px;
+}
+
 #banner {
     height: 14rem;
 }
@@ -6,17 +27,50 @@
     height: 100%;
 }
 
-#edit {
-    height: 4.5rem;
+#information {
+    height: 16rem;
     position: relative;
 
 }
-#edit i {
+#information i {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 10rem;
     position: absolute;
-    bottom: 15%;
+    bottom: calc(16rem - (120px /2));
     z-index: 1;
 }
+
+.information-text{
+    margin-top: 10%;
+    padding: 1rem;
+    color: #8899a6;
+}
+
+.information-text > h3 {
+    color: white;
+    margin: 0px;
+}
+
+#information h4 {
+    margin: 0px;
+}
+
+.num {
+    color: white;
+}
+
+#information .menu {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#information a {
+    font-size: 1.2rem;
+    color: #8899a6;
+    padding: 0 4rem;
+}
+
+
