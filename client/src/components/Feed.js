@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Grid, Icon} from 'semantic-ui-react'
+import Upvote from './Upvote'
 import '../styles/card.css'
 import { getPersonalPosts, getPosts } from '../redux/actions/card'
 
@@ -25,7 +26,7 @@ const Feed = () => {
                     <p>{card.user_username}</p>
                     <p>{card.body}</p>
                     <div className="card-menu">
-                        <Icon name="heart outline"/>
+                        <Upvote card={card._id}/>
                         <Icon name="comment outline"/>
                     </div>
                 </div>

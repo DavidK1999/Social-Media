@@ -53,4 +53,22 @@ export const getPersonalPosts = () => {
     }
 }
 
+export const upvotePost = post => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/card/upvote/${post}`, {
+                method: 'PUT',
+                headers: {
+                    'auth-token': window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            console.log(parsedResponse)
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+}
+
 
