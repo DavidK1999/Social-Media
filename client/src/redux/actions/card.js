@@ -56,6 +56,7 @@ export const getPersonalPosts = () => {
 export const upvotePost = post => {
     return async dispatch => {
         try {
+            console.log(post)
             const response = await fetch(`http://localhost:8000/api/card/upvote/${post}`, {
                 method: 'PUT',
                 headers: {
@@ -63,11 +64,10 @@ export const upvotePost = post => {
                 }
             })
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
+            dispatch({type: CardActionTypes.UPVOTE, value: parsedResponse})
         } catch (error) {
             console.log(error)
         }
-        
     }
 }
 
