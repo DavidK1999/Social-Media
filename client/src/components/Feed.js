@@ -14,16 +14,16 @@ const Feed = () => {
     useEffect(() => {
         if(explore) dispatch(getPosts())
         if(home) dispatch(getPersonalPosts())
-        console.log(cards.length)
-    }, [cards.length])
+    }, [])
+    
     
     const cardList = cards && cards.map((card, i) => {
         return(
-            <Grid.Row id="card-row">
+            <Grid.Row id="card-row" key={i}>
                 <Icon name="user circle"/>
                 <div className="card-content">
-                    <p>David Kalina @insane 18m</p>
-                    <p>Hey guys, this is my first post and I think this app is truly insane</p>
+                    <p>{card.user_username}</p>
+                    <p>{card.body}</p>
                     <div className="card-menu">
                         <Icon name="heart outline"/>
                         <Icon name="comment outline"/>

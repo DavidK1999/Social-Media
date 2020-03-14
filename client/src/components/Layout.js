@@ -1,21 +1,16 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Nav from './Nav'
-import Post from '../hooks/post'
-import CardList from './CardList'
+import Home from '../components/Home'
 import Feed from './Feed'
-import PersonalCardList from './PersonalCardList'
-import {Grid, Icon, Form, Input, Button} from 'semantic-ui-react'
+import Profile from './Profile'
+import {Grid} from 'semantic-ui-react'
 import {Route} from 'react-router-dom'
 import '../styles/layout.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {getPosts} from '../redux/actions/card'
 
 
 const Layout = () => {
-    const dispatch = useDispatch()
-    const {handleInputChange, handleSubmit} = Post()
     const cards = useSelector(state => state.card.cards)
-    const filter = useSelector(state => state.nav.filter)
     
     return (
         <Grid columns={3} divided id="layout-grid">
@@ -26,22 +21,10 @@ const Layout = () => {
                 <Grid.Row id="home-row">
                     Home
                 </Grid.Row>
-                
-                <Grid.Row id="home-menu">
-                    <Icon name="user circle outline"/> 
-                    <Form onSubmit={(e) => handleSubmit(e, '/post')}>
-                        <Form.Field>
-                            <Input 
-                            type="text" 
-                            name="body" 
-                            placeholder="What's happening?"
-                            onChange={handleInputChange}
-                            />
-                        </Form.Field>
-                        <Button>Submit</Button>
-                    </Form>
-                </Grid.Row>
-                
+
+                <Route exact path="/home" component={Home}/>
+                <Route exact path="/profile" component={Profile}/>
+                 
                 {
                     cards.length === 0 
                 ?

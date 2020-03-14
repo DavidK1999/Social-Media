@@ -11,6 +11,7 @@ router.get('/all', verify , async (req, res) => {
             card.verified = true
         }
     }
+    console.log(allCards)
     res.send(allCards)
 })
 

@@ -5,7 +5,7 @@ import {post} from '../redux/actions/card'
 
 const Post = () => {
     const dispatch = useDispatch()
-    const [inputs, setInputs] = useState({})
+    let [inputs, setInputs] = useState({})
    
     const handleInputChange = e => {
         e.preventDefault()
