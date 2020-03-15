@@ -20,7 +20,7 @@ const Layout = () => {
             <Grid.Column id="center-column">
 
                 <Route exact path="/home" component={Home}/>
-                <Route exact path="/profile" component={Profile}/>
+                <Route exact path={["/profile", "/likes"]} component={Profile}/>
                  
                 {
                     cards.length === 0 

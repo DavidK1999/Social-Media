@@ -4,21 +4,22 @@ import {Grid, Icon} from 'semantic-ui-react'
 import Upvote from './Upvote'
 import Upvoted from './Upvoted'
 import '../styles/card.css'
-import { getPersonalPosts, getPosts } from '../redux/actions/card'
+import { getPersonalPosts, getPosts, getLikedPosts } from '../redux/actions/card'
 
 const Feed = () => {
     const dispatch = useDispatch()
     const cards = useSelector(state => state.card.cards)
     const path = window.location.pathname
     const explore = path ==='/explore'
-    const personal = path ==='/home' || path ==="/profile"
+    const personal = path ==='/home' || path === "/profile"
+    const likes = path === '/likes'
 
     useEffect(() => {
-        if(explore) dispatch(getPosts())
+        if(explore)  dispatch(getPosts())
         if(personal) dispatch(getPersonalPosts())
-    }, [])
-    
-    
+        if(likes)    dispatch(getLikedPosts())
+    }, [path])
+
     const cardList = cards && cards.map((card, i) => {
         return(
             <Grid.Row id="card-row" key={i}>

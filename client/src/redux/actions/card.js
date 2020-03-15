@@ -53,6 +53,22 @@ export const getPersonalPosts = () => {
     }
 }
 
+export const getLikedPosts = () => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/card/likes`, {
+                headers: {
+                    'auth-token': window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            dispatch({type: CardActionTypes.READ, value: parsedResponse})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const upvotePost = post => {
     return async dispatch => {
         try {
@@ -70,5 +86,6 @@ export const upvotePost = post => {
         }
     }
 }
+
 
 

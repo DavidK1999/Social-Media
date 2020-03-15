@@ -34,10 +34,24 @@ router.get('/all', verify , async (req, res) => {
 
 router.get('/personal', verify , async (req, res) => {
     try {
+        console.log("PERSONAL")
         let personalCards = await Card.find({user_username: req.user.username})
         ownsIt(req.user, personalCards)
         upvotedIt(req.user, personalCards)
         res.send(personalCards)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.get('/likes', verify , async (req, res) => {
+    try {
+        console.log("LIKES")
+        let likedCards = await Card.find({"upvotes" : {$in: [req.user.username]}})
+        ownsIt(req.user, likedCards)
+        upvotedIt(req.user, likedCards)
+        console.log(likedCards)
+        res.send(likedCards)
     } catch (error) {
         console.log(error)
     }
