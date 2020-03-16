@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from '../hooks/post'
+import Feed from './Feed'
 import {Grid, Icon, Form, Input, Button} from 'semantic-ui-react'
 import '../styles/layout.css'
 
@@ -24,8 +25,8 @@ const Home = () => {
                         </Form.Field>
                         <Button>Submit</Button>
                     </Form>
-                    
         </Grid.Row>
+        <Feed/>
         </>
     );
 }

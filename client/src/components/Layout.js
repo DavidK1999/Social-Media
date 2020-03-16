@@ -4,7 +4,7 @@ import Home from '../components/Home'
 import Feed from './Feed'
 import Profile from './Profile'
 import {Grid} from 'semantic-ui-react'
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import '../styles/layout.css'
 import {useSelector} from 'react-redux'
 
@@ -19,8 +19,11 @@ const Layout = () => {
             </Grid.Column>
             <Grid.Column id="center-column">
 
+            <Switch>
                 <Route exact path="/home" component={Home}/>
-                <Route exact path={["/profile", "/likes"]} component={Profile}/>
+                <Route exact path="/explore" component={Feed}/>
+                <Route exact path={["/:username", "/:username/likes"]} component={Profile}/>
+            </Switch>
                  
                 {
                     cards.length === 0 
@@ -33,7 +36,7 @@ const Layout = () => {
                     null
                 }
                 
-                <Route exact path={["/home", "/explore"]} component={Feed}/>
+
 
             
             </Grid.Column>

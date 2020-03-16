@@ -44,6 +44,17 @@ router.get('/personal', verify , async (req, res) => {
     }
 })
 
+router.get('/profile/:username', verify , async (req, res) => {
+    try {
+        let profileCards = await Card.find({user_username: req.params.username})
+        ownsIt(req.user, profileCards)
+        upvotedIt(req.user, profileCards)
+        res.send(profileCards)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 router.get('/likes', verify , async (req, res) => {
     try {
         console.log("LIKES")

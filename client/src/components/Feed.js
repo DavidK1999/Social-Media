@@ -1,31 +1,35 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
+import {Link, useRouteMatch} from 'react-router-dom'
 import {Grid, Icon} from 'semantic-ui-react'
 import Upvote from './Upvote'
 import Upvoted from './Upvoted'
 import '../styles/card.css'
-import { getPersonalPosts, getPosts, getLikedPosts } from '../redux/actions/card'
+import { getProfilePosts, getPosts, getLikedPosts, getPersonalPosts } from '../redux/actions/card'
 
 const Feed = () => {
+    const match = useRouteMatch()
     const dispatch = useDispatch()
     const cards = useSelector(state => state.card.cards)
     const path = window.location.pathname
     const explore = path ==='/explore'
-    const personal = path ==='/home' || path === "/profile"
-    const likes = path === '/likes'
+    const home = path ==='/home'
+    const profile = match.params.username; 
+    const likes = path.split('/');
 
     useEffect(() => {
         if(explore)  dispatch(getPosts())
-        if(personal) dispatch(getPersonalPosts())
-        if(likes)    dispatch(getLikedPosts())
+        if(home)     dispatch(getPersonalPosts())
+        if(profile)  dispatch(getProfilePosts(profile))
+        if(likes[2])    dispatch(getLikedPosts(profile))
     }, [path])
 
     const cardList = cards && cards.map((card, i) => {
         return(
             <Grid.Row id="card-row" key={i}>
-                <Icon name="user circle"/>
+                <Link to={`/${card.user_username}`}><Icon name="user circle"/></Link>
                 <div className="card-content">
-                    <p>{card.user_username}</p>
+                    <div className="user-user-options">{card.user_username} <Icon name="chevron down"/></div>
                     <p>{card.body}</p>
                     <div className="card-menu">
                     {card.upvoted 

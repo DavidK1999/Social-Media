@@ -16,7 +16,8 @@ function App() {
       <Route exact path={["/", "/register"]} component={Entry}/>
       <Route path="/register" component={Auth}/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path={["/home", "/explore", "/likes", "/profile"]} component={Layout}/>
+      <Route exact path={["/home", "/explore", "/:username/likes"]} component={Layout}/>
+      <Route exact path="/:username" component={Layout}/>
       {loggedIn ? <Redirect to="/home"/> : null}
     </Router>
 

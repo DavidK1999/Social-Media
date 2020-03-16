@@ -1,10 +1,21 @@
 import React, { useEffect } from 'react'
 import Feed from './Feed'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useRouteMatch, useParams} from 'react-router-dom'
+import {getProfile} from '../redux/actions/user'
 import {Grid, Image, Icon, Menu} from 'semantic-ui-react'
 import '../styles/profile.css'
+import { useDispatch } from 'react-redux'
 
 const Profile = () => {
+    const params = useParams()
+    const match = useRouteMatch()
+    const dispatch = useDispatch()
+    const user = window.location.pathname
+
+    useEffect(() => {
+        dispatch(getProfile(user))
+        console.log(user)
+    }, [])
 
     return (
         <>
@@ -19,7 +30,7 @@ const Profile = () => {
                 <Image src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/88/4d/9a.jpg" fluid/>
             </Grid.Row>
             <Grid.Row id="information">
-                <Icon name="user circle"/>
+               <Icon name="user circle"/>
                 <div className="information-text">
                     <h3>David Kalina</h3>
                     <p>@DavidKalina</p>
@@ -28,8 +39,8 @@ const Profile = () => {
                     </div>
                 </div>
                 <Menu pointing secondary id="profile-nav">
-                <NavLink to="/profile">Cards</NavLink>
-                <NavLink to="/likes">Likes</NavLink>
+                <NavLink exact to={`/${match.params.username}`}>Cards</NavLink>
+                <NavLink exact to={`/${match.params.username}/likes`}>Likes</NavLink>
                 </Menu>
             </Grid.Row>
             <Feed/>

@@ -9,5 +9,10 @@ router.get('/currentUser', verify, async (req,res) => {
     res.json(currentUser)
 })
 
+router.get('/profile/:username', verify, async (req, res) => {
+    const profile = await User.find({username: req.params.username})
+    console.log(profile)
+})
+
 
 module.exports = router

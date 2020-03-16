@@ -53,6 +53,24 @@ export const getPersonalPosts = () => {
     }
 }
 
+export const getProfilePosts = profile => {
+    return async dispatch => {
+        try {
+            console.log(profile)
+            const response = await fetch(`http://localhost:8000/api/card/profile/${profile}`, {
+                headers: {
+                    'auth-token' : window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            console.log(parsedResponse)
+            dispatch({type: CardActionTypes.READ, value: parsedResponse})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const getLikedPosts = () => {
     return async dispatch => {
         try {
