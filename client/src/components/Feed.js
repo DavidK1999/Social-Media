@@ -37,7 +37,7 @@ const Feed = () => {
                         ?
                             <Upvoted/>
                         :
-                            <Upvote card={card._id}/>
+                            <Upvote card={card}/>
                     }
                         <Icon name="comment outline"/>
                     </div>

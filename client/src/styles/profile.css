@@ -43,14 +43,30 @@
 }
 
 .information-text{
+    display: flex;
+    justify-content: space-between;
     margin-top: 10%;
     padding: 1rem;
     color: #8899a6;
 }
 
-.information-text > h3 {
+
+
+.profile-stats {
+    color: #8899a6;
+    padding: 1rem;
+    padding-bottom: 0px;
+}
+
+.information-text  h3 {
     color: white;
     margin: 0px;
+}
+
+#information .information-text .button {
+    background-color: #15202b;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
 }
 
 #information h4 {
@@ -77,6 +93,9 @@
     color: #1da1f2;
     border-bottom: 1px solid #1da1f2;
 }
+
+
+
 
 
 

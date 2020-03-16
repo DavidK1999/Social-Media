@@ -19,5 +19,16 @@ router.get('/profile/:username', verify, async (req, res) => {
     }
 })
 
+router.put("/like/:username", verify, async (req, res) => {
+    try {
+        console.log("LIKE")
+        const addLikeToUser = await User.findOneAndUpdate({"username": req.params.username},
+        {$inc: {"upvoteCount": 1}}, {new: true})
+        res.send(addLikeToUser)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 module.exports = router

@@ -17,3 +17,23 @@ export const getProfile = username => {
         }
     }
 }
+
+export const likeProfile = username => {
+    return async dispatch => {
+        try {
+            console.log(username)
+            const response = await fetch(`http://localhost:8000/api/user/like/${username}`, {
+                method: 'PUT',
+                headers: {
+                    'auth-token': window.sessionStorage.token
+                }
+            })
+
+            const parsedResponse = await response.json()
+            dispatch({type: UserActionTypes.PROFILE, value: parsedResponse})
+            console.log(parsedResponse)
+        } catch (error) {
+            
+        }
+    }
+}

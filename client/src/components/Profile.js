@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Feed from './Feed'
 import {NavLink, useRouteMatch, useParams} from 'react-router-dom'
 import {getProfile} from '../redux/actions/user'
-import {Grid, Image, Icon, Menu} from 'semantic-ui-react'
+import {Grid, Image, Icon, Menu, Button} from 'semantic-ui-react'
 import '../styles/profile.css'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -34,15 +34,21 @@ const Profile = () => {
             <Grid.Row id="information">
                <Icon name="user circle"/>
                 <div className="information-text">
-                    <h3>{profile.username}</h3>
-                    <p>{profile.email}</p>
-                    <div className="profile-stats">
-                    <span className="num">{profile.followingCount}</span> Following <span className="num">{profile.followersCount}</span> Followers
+                    <div>
+                        <h3>{profile.username}</h3>
+                        <p>{profile.email}</p>
                     </div>
+                    <Button>Follow</Button>
                 </div>
+
+                
+                <div className="profile-stats">
+                    <span className="num">{profile.followingCount}</span> Following <span className="num">{profile.followersCount}</span> Followers
+                </div>
+                
                 <Menu pointing secondary id="profile-nav">
-                <NavLink exact to={`/${match.params.username}`}>Cards</NavLink>
-                <NavLink exact to={`/${match.params.username}/likes`}>Likes</NavLink>
+                    <NavLink exact to={`/${match.params.username}`}>Cards</NavLink>
+                    <NavLink exact to={`/${match.params.username}/likes`}>Likes</NavLink>
                 </Menu>
             </Grid.Row>
             <Feed/>
