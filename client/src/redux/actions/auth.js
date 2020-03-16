@@ -21,9 +21,10 @@ export const authenticate = (route, data) => {
                 }
             })
             const parsedResponse = await response.json()
+            console.log(parsedResponse)
             if(parsedResponse.status === 200) {
                 window.sessionStorage.token = parsedResponse.token
-               dispatch({type: AuthActionTypes.AUTHENTICATE})
+               dispatch({type: AuthActionTypes.AUTHENTICATE, value: parsedResponse.user})
             }
         } catch (error) {
             console.log('Authenticate Error', error)

@@ -71,10 +71,10 @@ export const getProfilePosts = profile => {
     }
 }
 
-export const getLikedPosts = () => {
+export const getLikedPosts = profile => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/likes`, {
+            const response = await fetch(`http://localhost:8000/api/card/likes/${profile}`, {
                 headers: {
                     'auth-token': window.sessionStorage.token
                 }

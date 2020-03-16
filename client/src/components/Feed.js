@@ -22,6 +22,7 @@ const Feed = () => {
         if(home)     dispatch(getPersonalPosts())
         if(profile)  dispatch(getProfilePosts(profile))
         if(likes[2])    dispatch(getLikedPosts(profile))
+        console.log(profile)
     }, [path])
 
     const cardList = cards && cards.map((card, i) => {

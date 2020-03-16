@@ -10,8 +10,13 @@ router.get('/currentUser', verify, async (req,res) => {
 })
 
 router.get('/profile/:username', verify, async (req, res) => {
-    const profile = await User.find({username: req.params.username})
-    console.log(profile)
+    try {
+        const profile = await User.findOne({"username": req.params.username})
+        res.send(profile)
+    } catch (error) {
+        console.log(error)
+        
+    }
 })
 
 

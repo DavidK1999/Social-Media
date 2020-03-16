@@ -55,10 +55,10 @@ router.get('/profile/:username', verify , async (req, res) => {
     }
 })
 
-router.get('/likes', verify , async (req, res) => {
+router.get('/likes/:username', verify , async (req, res) => {
     try {
         console.log("LIKES")
-        let likedCards = await Card.find({"upvotes" : {$in: [req.user.username]}})
+        let likedCards = await Card.find({"upvotes" : {$in: [req.params.username]}})
         ownsIt(req.user, likedCards)
         upvotedIt(req.user, likedCards)
         console.log(likedCards)

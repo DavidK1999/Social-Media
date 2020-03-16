@@ -2,7 +2,8 @@ import * as AuthTypes from '../actionTypes/auth'
 
 const initialState = {
     route: '',
-    loggedIn: false
+    loggedIn: false,
+    currentUser: ''
 }
 
 export default function Auth(state=initialState, action) {
@@ -12,7 +13,10 @@ export default function Auth(state=initialState, action) {
             return {...state, route: state.route = action.route}
         
         case AuthTypes.AUTHENTICATE:
-            return {...state, loggedIn: state.loggedIn = true}
+            return {
+                    ...state, loggedIn: state.loggedIn = true,
+                    ...state, currentUser: state.currentUser = action.value
+                   }
         
         default:
             return state

@@ -4,13 +4,15 @@ import {NavLink, useRouteMatch, useParams} from 'react-router-dom'
 import {getProfile} from '../redux/actions/user'
 import {Grid, Image, Icon, Menu} from 'semantic-ui-react'
 import '../styles/profile.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Profile = () => {
     const params = useParams()
     const match = useRouteMatch()
     const dispatch = useDispatch()
     const user = window.location.pathname
+    const profile = useSelector(state => state.user.userData)
+    console.log(user)
 
     useEffect(() => {
         dispatch(getProfile(user))
@@ -22,7 +24,7 @@ const Profile = () => {
             <Grid.Row id="top">
                 <NavLink to="/home"><Icon name="arrow left"/></NavLink>
                 <div>
-                    <h3>David Kalina</h3>
+                    <h3>{profile.username}</h3>
                     <small> 0 posts</small>
                 </div>
             </Grid.Row>
@@ -32,10 +34,10 @@ const Profile = () => {
             <Grid.Row id="information">
                <Icon name="user circle"/>
                 <div className="information-text">
-                    <h3>David Kalina</h3>
-                    <p>@DavidKalina</p>
+                    <h3>{profile.username}</h3>
+                    <p>{profile.email}</p>
                     <div className="profile-stats">
-                    <span className="num">0</span> Following <span className="num">0</span> Followers
+                    <span className="num">{profile.followingCount}</span> Following <span className="num">{profile.followersCount}</span> Followers
                     </div>
                 </div>
                 <Menu pointing secondary id="profile-nav">
