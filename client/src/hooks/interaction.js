@@ -1,6 +1,6 @@
 import React from 'react';
 import {upvotePost} from '../redux/actions/card'
-import {likeProfile} from '../redux/actions/user'
+import {likeProfile, followProfile, followedProfile} from '../redux/actions/user'
 import { useDispatch } from 'react-redux';
 
 const Interaction = () => {
@@ -12,7 +12,12 @@ const Interaction = () => {
         dispatch(likeProfile(card.user_username))
     }
 
-    return upvote
+    const follow = (userToFollow) => {
+        dispatch(followProfile(userToFollow))
+        dispatch(followedProfile(userToFollow))
+    }
+
+    return {upvote, follow}
 }
  
 export default Interaction;

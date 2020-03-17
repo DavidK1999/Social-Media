@@ -10,7 +10,6 @@ export const getProfile = username => {
             })
 
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
             dispatch({type: UserActionTypes.PROFILE, value: parsedResponse})
         } catch (error) {
             console.log(error)
@@ -32,6 +31,42 @@ export const likeProfile = username => {
             const parsedResponse = await response.json()
             dispatch({type: UserActionTypes.PROFILE, value: parsedResponse})
             console.log(parsedResponse)
+        } catch (error) {
+            
+        }
+    }
+}
+
+export const followProfile = username => {
+    return async (dispatch, getState) => {
+        try {
+            console.log(username)
+            const response = await fetch(`http://localhost:8000/api/user/follow/${username}`, {
+                method: 'PUT',
+                headers: {
+                    'auth-token':window.sessionStorage.token,
+                }
+            })
+            const parsedResponse = await response.json()
+            dispatch({type: UserActionTypes.PROFILE, value: parsedResponse})
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const followedProfile = username => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/user/followed/${username}`, {
+                method: 'PUT',
+                headers: {
+                    'auth-token':window.sessionStorage.token,
+                }
+            })
+            const parsedResponse = await response.json()
+            dispatch({type: UserActionTypes.PROFILE, value: parsedResponse})
         } catch (error) {
             
         }

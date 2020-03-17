@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import Feed from './Feed'
+import Follow from './Follow'
 import {NavLink, useRouteMatch, useParams} from 'react-router-dom'
 import {getProfile} from '../redux/actions/user'
-import {Grid, Image, Icon, Menu, Button} from 'semantic-ui-react'
+import {Grid, Image, Icon, Menu, Button, Card} from 'semantic-ui-react'
 import '../styles/profile.css'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -12,6 +13,7 @@ const Profile = () => {
     const dispatch = useDispatch()
     const user = window.location.pathname
     const profile = useSelector(state => state.user.userData)
+    const currentUser = useSelector(state => state.auth.currentUser)
     console.log(user)
 
     useEffect(() => {
@@ -38,12 +40,12 @@ const Profile = () => {
                         <h3>{profile.username}</h3>
                         <p>{profile.email}</p>
                     </div>
-                    <Button>Follow</Button>
+                    <Follow userToFollow={profile.username}/>
                 </div>
 
                 
                 <div className="profile-stats">
-                    <span className="num">{profile.followingCount}</span> Following <span className="num">{profile.followersCount}</span> Followers
+                    <span className="num">{profile.following && profile.following.length}</span> Following <span className="num">{profile.followers && profile.followers.length}</span> Followers
                 </div>
                 
                 <Menu pointing secondary id="profile-nav">
