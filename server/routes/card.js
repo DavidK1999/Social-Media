@@ -11,11 +11,21 @@ const ownsIt = (user, collection) => {
     }
 }
 
+
+
 const upvotedIt = (user, collection) => {
     for(let card of collection) {
         console.log(user.username)
         if(card.upvotes.includes(user.username)) {
            card.upvoted = true
+        }
+    }
+}
+
+const upvotedItLikes = collection => {
+    for(let card of collection) {
+        if(card.upvotes.length !== 0) {
+            card.upvoted = true
         }
     }
 }
@@ -60,7 +70,7 @@ router.get('/likes/:username', verify , async (req, res) => {
         console.log("LIKES")
         let likedCards = await Card.find({"upvotes" : {$in: [req.params.username]}})
         ownsIt(req.user, likedCards)
-        upvotedIt(req.user, likedCards)
+        upvotedItLikes(likedCards)
         console.log(likedCards)
         res.send(likedCards)
     } catch (error) {
