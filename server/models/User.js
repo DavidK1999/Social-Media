@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
     followersCount: {type: Number, default: 0},
     followingCount: {type: Number, default: 0},
     followers: [String],
-    following: [String]
+    following: [String],
+    isFollowing: {type: Boolean, default: false}
 })
 
 module.exports = mongoose.model('User', userSchema)

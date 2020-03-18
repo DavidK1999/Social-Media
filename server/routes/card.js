@@ -11,8 +11,6 @@ const ownsIt = (user, collection) => {
     }
 }
 
-
-
 const upvotedIt = (user, collection) => {
     for(let card of collection) {
         console.log(user.username)

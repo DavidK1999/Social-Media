@@ -12,6 +12,8 @@ router.get('/currentUser', verify, async (req,res) => {
 router.get('/profile/:username', verify, async (req, res) => {
     try {
         const profile = await User.findOne({"username": req.params.username})
+        if(profile.followers.includes(req.user.username)) profile.isFollowing = true
+        console.log(profile)
         res.send(profile)
     } catch (error) {
         console.log(error)
