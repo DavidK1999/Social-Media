@@ -15,14 +15,16 @@ const Feed = () => {
     const explore = path ==='/explore'
     const home = path ==='/home'
     const profile = match.params.username; 
+    const profilePath = match.path === "/:username"
     const likes = path.split('/');
+    const likesPath = match.path ==="/:username/likes"
 
     useEffect(() => {
         if(explore)  dispatch(getPosts())
         if(home)     dispatch(getPersonalPosts())
-        if(profile)  dispatch(getProfilePosts(profile))
-        if(likes[2])    dispatch(getLikedPosts(profile))
-        console.log(profile)
+        if(profilePath)  dispatch(getProfilePosts(profile))
+        if(likesPath) dispatch(getLikedPosts(profile))
+        console.log(likesPath)
     }, [path])
 
     const cardList = cards && cards.map((card, i) => {

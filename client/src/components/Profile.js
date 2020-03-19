@@ -15,11 +15,9 @@ const Profile = () => {
     const user = window.location.pathname
     const profile = useSelector(state => state.user.userData)
     const currentUser = useSelector(state => state.auth.currentUser)
-    console.log(user)
 
     useEffect(() => {
         dispatch(getProfile(user))
-        console.log(profile)
     }, [profile.followers && profile.followers.length])
 
     return (

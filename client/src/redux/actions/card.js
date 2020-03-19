@@ -56,7 +56,6 @@ export const getPersonalPosts = () => {
 export const getProfilePosts = profile => {
     return async dispatch => {
         try {
-            console.log(profile)
             const response = await fetch(`http://localhost:8000/api/card/profile/${profile}`, {
                 headers: {
                     'auth-token' : window.sessionStorage.token
@@ -80,6 +79,7 @@ export const getLikedPosts = profile => {
                 }
             })
             const parsedResponse = await response.json()
+            console.log(parsedResponse)
             dispatch({type: CardActionTypes.READ, value: parsedResponse})
         } catch (error) {
             console.log(error)
