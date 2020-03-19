@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const verify = require('../verifyToken')
 const Card = require('../models/Card')
+const User = require('../models/User')
 
 const ownsIt = (user, collection) => {
     for(let card of collection) {
@@ -43,7 +44,9 @@ router.get('/all', verify , async (req, res) => {
 router.get('/personal', verify , async (req, res) => {
     try {
         console.log("PERSONAL")
-        let personalCards = await Card.find({user_username: req.user.username})
+        let user = await User.findOne({"username": req.user.username})
+        let personalCards = await Card.find({$or: [{"user_username": req.user.username}, {"user_username": {$in: user.following}}]})
+        console.log(personalCards)
         ownsIt(req.user, personalCards)
         upvotedIt(req.user, personalCards)
         res.send(personalCards)
