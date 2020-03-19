@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, useRouteMatch} from 'react-router-dom'
 import {Grid, Icon} from 'semantic-ui-react'
+import reactStringReplace from 'react-string-replace'
 import Upvote from './Upvote'
 import Upvoted from './Upvoted'
 import '../styles/card.css'
@@ -33,7 +34,7 @@ const Feed = () => {
                 <Link to={`/${card.user_username}`}><Icon name="user circle"/></Link>
                 <div className="card-content">
                     <div className="user-user-options">{card.user_username} <Icon name="chevron down"/></div>
-                    <p>{card.body}</p>
+                    <p>{reactStringReplace(card.body, /(#\S[a-zA-Z]*)/gi, (match, i) => <button key={i} className="tag">{match}</button>)}</p>
                     <div className="card-menu">
                     {card.upvoted 
                         ?
