@@ -2,23 +2,21 @@ import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, useRouteMatch} from 'react-router-dom'
 import {Grid, Icon} from 'semantic-ui-react'
-import reactStringReplace from 'react-string-replace'
 import Upvote from './Upvote'
 import Upvoted from './Upvoted'
+import Tag from './Tag'
 import '../styles/card.css'
 import { getProfilePosts, getPosts, getLikedPosts, getPersonalPosts } from '../redux/actions/card'
 
 const Feed = () => {
-    const match = useRouteMatch()
     const dispatch = useDispatch()
+    const match = useRouteMatch()
     const cards = useSelector(state => state.card.cards)
-    const path = window.location.pathname
-    const explore = path ==='/explore'
-    const home = path ==='/home'
-    const profile = match.params.username; 
+    const explore = match.path ==='/explore'
+    const home = match.path ==='/home'
     const profilePath = match.path === "/:username"
-    const likes = path.split('/');
     const likesPath = match.path ==="/:username/likes"
+    const profile = match.params.username; 
 
     useEffect(() => {
         if(explore)  dispatch(getPosts())
@@ -26,7 +24,7 @@ const Feed = () => {
         if(profilePath)  dispatch(getProfilePosts(profile))
         if(likesPath) dispatch(getLikedPosts(profile))
         console.log(likesPath)
-    }, [path])
+    }, [match.path])
 
     const cardList = cards && cards.map((card, i) => {
         return(
@@ -34,15 +32,9 @@ const Feed = () => {
                 <Link to={`/${card.user_username}`}><Icon name="user circle"/></Link>
                 <div className="card-content">
                     <div className="user-user-options">{card.user_username} <Icon name="chevron down"/></div>
-                    <p>{reactStringReplace(card.body, /(#\S[a-zA-Z]*)/gi, (match, i) => <button key={i} className="tag">{match}</button>)}</p>
+                    <Tag card={card}/>
                     <div className="card-menu">
-                    {card.upvoted 
-                        ?
-                            <Upvoted/>
-                        :
-                            <Upvote card={card}/>
-                    }
-                        <Icon name="comment outline"/>
+                    {card.upvoted ? <Upvoted/> : <Upvote card={card}/>}
                     </div>
                 </div>
             </Grid.Row>

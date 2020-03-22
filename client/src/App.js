@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import Entry from './components/Entry'
 import Auth from './components/Auth'
 import Login from './components/Login'
@@ -13,11 +13,15 @@ function App() {
 
   return (
     <Router>
-      <Route exact path={["/", "/register"]} component={Entry}/>
-      <Route path="/register" component={Auth}/>
-      <Route exact path="/login" component={Login}/>
-      <Route exact path={["/home", "/explore", "/:username", "/:username/likes"]} component={Layout}/>
-      {loggedIn ? <Redirect to="/home"/> : null}
+        <Route exact path={["/", "/register"]} component={Entry}/>
+        <Route exact path="/register" component={Auth}/>
+        
+        <Switch>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path={["/home", "/explore", "/:username", "/:username/likes"]} component={Layout}/>
+        </Switch>
+        
+        {loggedIn ? <Redirect to="/home"/> : null}
     </Router>
 
   );

@@ -17,31 +17,28 @@ const Layout = () => {
             <Grid.Column id="left-column">
                 <Nav/>
             </Grid.Column>
+            
             <Grid.Column id="center-column">
 
-            <Switch>
-                <Route exact path="/home" component={Home}/>
-                <Route exact path="/explore" component={Feed}/>
-                <Route exact path={["/:username", "/:username/likes"]} component={Profile}/>
-            </Switch>
-                 
-                {
-                    cards.length === 0 
-                ?
-                    <Grid.Row id="home-intro">
-                        <h3>Welcome to Community Cards</h3>
-                        <p>This is a twitter clone that captures the essentials of twitter</p>
-                    </Grid.Row>
-                : 
-                    null
-                }
-                
-
-
+                <Switch>
+                    <Route exact path="/home" component={Home}/>
+                    <Route exact path="/explore" component={Feed}/>
+                    <Route exact path={["/:username", "/:username/likes"]} component={Profile}/>
+                </Switch>
+                    
+                    {
+                        cards.length === 0 
+                    ?
+                        <Grid.Row id="home-intro">
+                            <h3>Welcome to Community Cards</h3>
+                            <p>This is a twitter clone that captures the essentials of twitter</p>
+                        </Grid.Row>
+                    : 
+                        null
+                    }
+            </Grid.Column>
             
-            </Grid.Column>
-            <Grid.Column id="layout-right-column">
-            </Grid.Column>
+            <Grid.Column id="layout-right-column"/>
       </Grid>
     );
 }

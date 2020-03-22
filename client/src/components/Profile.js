@@ -2,14 +2,13 @@ import React, { useEffect } from 'react'
 import Feed from './Feed'
 import Follow from './Follow'
 import Followed from './Followed'
-import {NavLink, useRouteMatch, useParams} from 'react-router-dom'
+import {NavLink, useRouteMatch} from 'react-router-dom'
 import {getProfile} from '../redux/actions/user'
-import {Grid, Image, Icon, Menu, Button, Card} from 'semantic-ui-react'
+import {Grid, Image, Icon, Menu} from 'semantic-ui-react'
 import '../styles/profile.css'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Profile = () => {
-    const params = useParams()
     const match = useRouteMatch()
     const dispatch = useDispatch()
     const user = window.location.pathname

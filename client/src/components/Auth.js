@@ -1,8 +1,7 @@
-import React,  {useState} from 'react'
+import React from 'react'
 import {Modal, Form, Button, Input} from 'semantic-ui-react'
 import Authenticate from '../hooks/authenticate'
 import '../styles/auth.css'
-import { useSelector } from 'react-redux'
 
 const Auth = () => {
     const route = window.location.pathname.substring(1)

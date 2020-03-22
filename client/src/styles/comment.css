@@ -1,0 +1,18 @@
+
+#comment-content #comment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#comment-content #comment-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    width: 5rem;
+}
+#comment-form #text {
+    background-color: #15202b;
+    color: white;
+}
