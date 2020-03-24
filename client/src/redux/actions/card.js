@@ -87,6 +87,23 @@ export const getLikedPosts = profile => {
     }
 }
 
+export const getTaggedPosts = tag => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/card/tagged/${tag}`, {
+                headers: {
+                    'auth-token': window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            console.log(parsedResponse)
+            dispatch({type: CardActionTypes.READ, value: parsedResponse})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const upvotePost = post => {
     return async dispatch => {
         try {

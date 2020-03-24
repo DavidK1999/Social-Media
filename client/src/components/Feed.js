@@ -6,7 +6,7 @@ import Upvote from './Upvote'
 import Upvoted from './Upvoted'
 import Tag from './Tag'
 import '../styles/card.css'
-import { getProfilePosts, getPosts, getLikedPosts, getPersonalPosts } from '../redux/actions/card'
+import { getProfilePosts, getPosts, getLikedPosts, getPersonalPosts, getTaggedPosts } from '../redux/actions/card'
 
 const Feed = () => {
     const dispatch = useDispatch()
@@ -16,14 +16,17 @@ const Feed = () => {
     const home = match.path ==='/home'
     const profilePath = match.path === "/:username"
     const likesPath = match.path ==="/:username/likes"
-    const profile = match.params.username; 
+    const taggedPath = match.path === "/tagged/:tag"
+    const tag = match.params.tag
+    const profile = match.params.username;
 
     useEffect(() => {
-        if(explore)  dispatch(getPosts())
-        if(home)     dispatch(getPersonalPosts())
+        if(explore)      dispatch(getPosts())
+        if(home)         dispatch(getPersonalPosts())
         if(profilePath)  dispatch(getProfilePosts(profile))
-        if(likesPath) dispatch(getLikedPosts(profile))
-        console.log(likesPath)
+        if(likesPath)    dispatch(getLikedPosts(profile))
+        if(taggedPath)   dispatch(getTaggedPosts(tag))
+        console.log(match)
     }, [match.path])
 
     const cardList = cards && cards.map((card, i) => {

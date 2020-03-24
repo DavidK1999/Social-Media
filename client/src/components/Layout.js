@@ -22,7 +22,7 @@ const Layout = () => {
 
                 <Switch>
                     <Route exact path="/home" component={Home}/>
-                    <Route exact path="/explore" component={Feed}/>
+                    <Route exact path={["/explore", "/tagged/:tag"]} component={Feed}/>
                     <Route exact path={["/:username", "/:username/likes"]} component={Profile}/>
                 </Switch>
                     

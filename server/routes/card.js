@@ -79,6 +79,19 @@ router.get('/likes/:username', verify , async (req, res) => {
     }
 })
 
+router.get('/tagged/:tag', verify, async (req, res) => {
+    try {
+        console.log("TAGGED")
+        let taggedCards = await Card.find({"tags": {$in: [req.params.tag]}})
+        ownsIt(req.user, taggedCards)
+        upvotedItLikes(taggedCards)
+        console.log(taggedCards)
+        res.send(taggedCards)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 router.post('/post', verify, async (req, res) => {
     try {
         req.body.user_username = req.user.username
