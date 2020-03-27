@@ -3,6 +3,7 @@ import Nav from './Nav'
 import Home from '../components/Home'
 import Feed from './Feed'
 import Profile from './Profile'
+import CreateCard from './CreateCard'
 import {Grid} from 'semantic-ui-react'
 import {Route, Switch} from 'react-router-dom'
 import '../styles/layout.css'
@@ -23,6 +24,7 @@ const Layout = () => {
                 <Switch>
                     <Route exact path="/home" component={Home}/>
                     <Route exact path={["/explore", "/tagged/:tag"]} component={Feed}/>
+                    <Route exacth path = "/create" component={CreateCard}/>
                     <Route exact path={["/:username", "/:username/likes"]} component={Profile}/>
                 </Switch>
                     

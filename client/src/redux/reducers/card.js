@@ -2,7 +2,8 @@ import * as CardActionTypes from '../actionTypes/card'
 
 const initialState = {
     cards: [],
-    error: ''
+    error: '',
+    'posting': false
 }
 
 export default function Card(state=initialState, action) {

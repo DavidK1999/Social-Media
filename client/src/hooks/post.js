@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {post} from '../redux/actions/card'
 
 
 const Post = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     let [inputs, setInputs] = useState({})
    
     const handleInputChange = e => {
@@ -20,6 +22,7 @@ const Post = () => {
    const handleSubmit = (e, route) => {
        e.preventDefault()
        dispatch(post(inputs, route))
+       history.push('/home')
     }
 
     return {handleInputChange, handleSubmit}
