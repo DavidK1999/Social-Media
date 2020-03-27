@@ -2,6 +2,7 @@ import * as CardActionTypes from '../actionTypes/card'
 
 const initialState = {
     cards: [],
+    error: ''
 }
 
 export default function Card(state=initialState, action) {
@@ -15,6 +16,8 @@ export default function Card(state=initialState, action) {
                if(card._id === action.value._id) card = action.value
                return card
             })}
+        case CardActionTypes.ERROR:
+            return {...state, error: state.error = action.value}
 
         default:
             return state

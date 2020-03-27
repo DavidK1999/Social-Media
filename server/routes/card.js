@@ -14,7 +14,6 @@ const ownsIt = (user, collection) => {
 
 const upvotedIt = (user, collection) => {
     for(let card of collection) {
-        console.log(user.username)
         if(card.upvotes.includes(user.username)) {
            card.upvoted = true
         }
@@ -34,7 +33,6 @@ router.get('/all', verify , async (req, res) => {
         let allCards = await Card.find()
         ownsIt(req.user, allCards)
         upvotedIt(req.user, allCards)
-        console.log(allCards)
         res.send(allCards)
     } catch (error) {
         console.log(error)
@@ -43,15 +41,13 @@ router.get('/all', verify , async (req, res) => {
 
 router.get('/personal', verify , async (req, res) => {
     try {
-        console.log("PERSONAL")
         let user = await User.findOne({"username": req.user.username})
         let personalCards = await Card.find({$or: [{"user_username": req.user.username}, {"user_username": {$in: user.following}}]})
-        console.log(personalCards)
         ownsIt(req.user, personalCards)
         upvotedIt(req.user, personalCards)
         res.send(personalCards)
     } catch (error) {
-        console.log(error)
+        res.json(req.error)
     }
 })
 
@@ -68,11 +64,9 @@ router.get('/profile/:username', verify , async (req, res) => {
 
 router.get('/likes/:username', verify , async (req, res) => {
     try {
-        console.log("LIKES")
         let likedCards = await Card.find({"upvotes" : {$in: [req.params.username]}})
         ownsIt(req.user, likedCards)
         upvotedItLikes(likedCards)
-        console.log(likedCards)
         res.send(likedCards)
     } catch (error) {
         console.log(error)
@@ -81,11 +75,9 @@ router.get('/likes/:username', verify , async (req, res) => {
 
 router.get('/tagged/:tag', verify, async (req, res) => {
     try {
-        console.log("TAGGED")
         let taggedCards = await Card.find({"tags": {$in: [req.params.tag]}})
         ownsIt(req.user, taggedCards)
         upvotedItLikes(taggedCards)
-        console.log(taggedCards)
         res.send(taggedCards)
     } catch (error) {
         console.log(error)

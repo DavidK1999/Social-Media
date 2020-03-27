@@ -3,11 +3,13 @@ import {useDispatch, useSelector} from 'react-redux'
 import {filterFetch} from '../redux/actions/nav'
 import {Menu, Icon} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
+import Deauthenticate from '../hooks/deauthenticate'
 import '../styles/nav.css'
 
 
 const Nav = () => {
     const currentUser = useSelector(state => state.auth.currentUser)
+    const logout = Deauthenticate()
     
     return (
         <Menu vertical secondary id="nav">
@@ -30,7 +32,10 @@ const Nav = () => {
                 Profile
             </NavLink>
             
-            <NavLink exact to="/logout" className="item">
+            <NavLink 
+                exact to="/logout" 
+                className="item" 
+                onClick={()=> logout()}>
                 <Icon name="sign out"/>
                 Log out
             </NavLink>

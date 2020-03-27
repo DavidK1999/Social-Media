@@ -29,7 +29,7 @@ const Feed = () => {
         console.log(match)
     }, [match.path])
 
-    const cardList = cards && cards.map((card, i) => {
+    const cardList = cards.map && cards.map((card, i) => {
         return(
             <Grid.Row id="card-row" key={i}>
                 <Link to={`/${card.user_username}`}><Icon name="user circle"/></Link>

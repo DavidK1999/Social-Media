@@ -25,9 +25,15 @@ export const authenticate = (route, data) => {
             if(parsedResponse.status === 200) {
                 window.sessionStorage.token = parsedResponse.token
                dispatch({type: AuthActionTypes.AUTHENTICATE, value: parsedResponse.user})
-            }
+            } 
         } catch (error) {
             console.log('Authenticate Error', error)
         }
+    }
+}
+
+export const deauthenticate = () => {
+    return {
+        type: AuthActionTypes.DEAUTHENTICATE
     }
 }

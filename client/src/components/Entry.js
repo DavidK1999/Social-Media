@@ -3,10 +3,12 @@ import {Link} from 'react-router-dom'
 import Authenticate from '../hooks/authenticate'
 import {Grid, Form, Input, Button, Icon, Header, Menu} from 'semantic-ui-react'
 import '../styles/entry.css'
+import { useSelector } from 'react-redux'
 
 const Entry = () => {
     const [route, setRoute] = useState()
     const {handleInputChange, handleSubmit} = Authenticate()
+    const logged = useSelector(state => state.auth.loggedIn)
 
     return (
         <Grid columns={2} divided id="entry-grid">
@@ -70,6 +72,7 @@ const Entry = () => {
             </Grid.Column>
             
             <Grid.Row id="footer">
+            <button onClick={()=>console.log(logged)}>LOGGEED</button>
                 <h6>About</h6>
                 <h6>About</h6>
                 <h6>About</h6>
@@ -77,6 +80,7 @@ const Entry = () => {
                 <h6>About</h6>
                 <h6>About</h6>
             </Grid.Row>
+
             
         </Grid>
     )

@@ -13,15 +13,15 @@ function App() {
 
   return (
     <Router>
-        <Route exact path={["/", "/register"]} component={Entry}/>
-        <Route exact path="/register" component={Auth}/>
         
         <Switch>
+          <Route exact path={["/", "/register", "/logout"]} component={Entry}/>
+          <Route exact path="/register" component={Auth}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path={["/home", "/explore", "/:username", "/:username/likes", "/tagged/:tag"]} component={Layout}/>
         </Switch>
         
-        {loggedIn ? <Redirect to="/home"/> : null}
+        {loggedIn ? <Redirect to="/home"/> : <Redirect to="/"/>}
     </Router>
 
   );
