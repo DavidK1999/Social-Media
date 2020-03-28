@@ -28,7 +28,7 @@ const Feed = () => {
         if(likesPath)    dispatch(getLikedPosts(profile))
         if(taggedPath)   dispatch(getTaggedPosts(tag))
         console.log(match)
-    }, [match.path])
+    }, [match.path, cards.length])
 
     const cardList = cards.map && cards.map((card, i) => {
         return(
