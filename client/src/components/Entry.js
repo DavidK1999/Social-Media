@@ -74,7 +74,6 @@ const Entry = () => {
             </Grid.Column>
             
             <Grid.Row id="footer">
-            <button onClick={()=>console.log(logged)}>LOGGEED</button>
                 <h6>About</h6>
                 <h6>About</h6>
                 <h6>About</h6>
