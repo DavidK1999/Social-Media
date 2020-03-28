@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Authenticate from '../hooks/authenticate'
-import {Grid, Form, Input, Button, Icon, Header, Menu} from 'semantic-ui-react'
+import {Grid, Form, Input, Button, Icon, Header, Menu, Message} from 'semantic-ui-react'
 import '../styles/entry.css'
 import { useSelector } from 'react-redux'
 
@@ -9,6 +9,7 @@ const Entry = () => {
     const [route, setRoute] = useState()
     const {handleInputChange, handleSubmit} = Authenticate()
     const logged = useSelector(state => state.auth.loggedIn)
+    const error = useSelector(state => state.auth.error)
 
     return (
         <Grid columns={2} divided id="entry-grid">
@@ -52,6 +53,7 @@ const Entry = () => {
                             <Button onClick={() => setRoute('login')}>Log in</Button>
                         </Form.Field>
                     </Form>
+                        {error ? <Message negative>{error}</Message>:null}
                 </Grid.Row>
                 
                 <Grid.Row id="right-column-bottom-row">

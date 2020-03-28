@@ -135,3 +135,9 @@
     margin: 0 4rem;
     font-size: 0.9rem;
 }
+
+#right-entry-column .message {
+    margin: auto;
+    margin-top: 1%;
+    width: 50%;
+}

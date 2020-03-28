@@ -8,7 +8,7 @@ const {registerValidation, loginValidation} = require('../validation')
 router.post('/register', async (req, res) => {
 
     const userExists = await User.findOne({email: req.body.email})
-    if(userExists) return res.status(400).send('A user with that email already exists')
+    if(userExists) res.status(400).send({status: 400, message: "A user with this email or username already exists"})
 
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
@@ -24,23 +24,26 @@ router.post('/register', async (req, res) => {
         const token = jwt.sign({username: savedUser.username}, process.env.ACCESS_TOKEN_SECRET)
         res.header('auth-token', token).send({token, status: 200, user: user.username})
     } catch (error) {
-        res.status(400)
+        console.log(error)
     }
 })
 
 router.post('/login', async (req, res) => {
+    console.log('Hi')
+    try {
+        const user = await User.findOne({email: req.body.email})
+        if(!user) return res.status(400).send({status: 400, message: 'Incorrect email or password'})
     
-    const user = await User.findOne({email: req.body.email})
-    if(!user) return res.status(400).send('Incorrect email')
-
-
-    const validPassword = await bcrypt.compare(req.body.password, user.password)
-    if(!validPassword) return res.status(400).send('Incorrect password')
-
-    const token = jwt.sign({username: user.username}, process.env.ACCESS_TOKEN_SECRET)
     
-    res.header('auth-token', token).send({token, status: 200, user: user.username})
-
+        const validPassword = await bcrypt.compare(req.body.password, user.password)
+        if(!validPassword) return res.status(400).send('Incorrect password')
+    
+        const token = jwt.sign({username: user.username}, process.env.ACCESS_TOKEN_SECRET)
+        
+        res.header('auth-token', token).send({token, status: 200, user: user.username})
+    } catch (error) {
+        console.lor(error)
+    }
 })
 
 module.exports = router

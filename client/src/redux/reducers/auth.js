@@ -23,6 +23,8 @@ export default function Auth(state=initialState, action) {
                 ...state, loggedIn: state.loggedIn = false,
                 ...state, currentUser: state.currentUser = ''
             }
+        case AuthTypes.ERROR:
+            return {...state, error: state.error = action.value}
         
         default:
             return state
