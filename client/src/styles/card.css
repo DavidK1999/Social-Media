@@ -10,7 +10,7 @@
     margin-top: 3%;
 }
 
-#card-row i {
+#card-row .user-circle {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -52,4 +52,19 @@
     font-size: 1rem;
 }
 
+#card-row > .dropdown {
+    color:#798996;
+    position: relative;
+}
+
+#card-row .dropdown .menu {
+    background-color: #15202b;
+    position: absolute;
+    border: 1px solid #28343f;
+    top: 0px;
+}
+
+#card-row .dropdown .item {
+    color: #e0245e;
+}
 

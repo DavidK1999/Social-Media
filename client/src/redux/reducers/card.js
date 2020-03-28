@@ -17,6 +17,8 @@ export default function Card(state=initialState, action) {
                if(card._id === action.value._id) card = action.value
                return card
             })}
+        case CardActionTypes.DELETE:
+            return {...state, cards: state.cards = state.cards.filter(card => card._id !== action.value)}
         case CardActionTypes.ERROR:
             return {...state, error: state.error = action.value}
 

@@ -5,6 +5,7 @@ import {Grid, Icon} from 'semantic-ui-react'
 import Upvote from './Upvote'
 import Upvoted from './Upvoted'
 import Tag from './Tag'
+import CardDropdown from './CardDropdown'
 import '../styles/card.css'
 import { getProfilePosts, getPosts, getLikedPosts, getPersonalPosts, getTaggedPosts } from '../redux/actions/card'
 
@@ -32,9 +33,17 @@ const Feed = () => {
     const cardList = cards.map && cards.map((card, i) => {
         return(
             <Grid.Row id="card-row" key={i}>
-                <Link to={`/${card.user_username}`}><Icon name="user circle"/></Link>
+                <Link to={`/${card.user_username}`}><Icon name="user circle" className="user-circle"/></Link>
                 <div className="card-content">
-                    <div className="user-user-options">{card.user_username} <Icon name="chevron down"/></div>
+                    <div className="user-user-options">
+                        {card.user_username} 
+                        {card.verified 
+                            ? 
+                                <CardDropdown id="dropdown" post={card._id}/>
+                            : 
+                            null
+                        }
+                        </div>
                     <Tag card={card}/>
                     <div className="card-menu">
                     {card.upvoted ? <Upvoted/> : <Upvote card={card}/>}

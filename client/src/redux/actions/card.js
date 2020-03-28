@@ -122,5 +122,24 @@ export const upvotePost = post => {
     }
 }
 
+export const deletePost = post => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`/api/card/delete/${post}`, {
+                method: 'DELETE',
+                headers: {
+                    'auth-token': window.sessionStorage.token
+                }
+            })
+            const parsedResponse = await response.json()
+            console.log(parsedResponse)
+           if(parsedResponse.status === 400) return
+            dispatch({type: CardActionTypes.DELETE, value: post})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 
 

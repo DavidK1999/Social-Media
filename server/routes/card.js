@@ -107,4 +107,15 @@ router.put('/upvote/:cardID', verify, async (req, res) => {
     }
 })
 
+router.delete('/delete/:cardID', verify, async (req, res) => {
+    console.log('Delete')
+    try {
+        let deletedCard = await Card.findById(req.params.cardID)
+        console.log(deletedCard.user_username)
+        req.user.username === deletedCard.user_username ? await Card.findByIdAndDelete(req.params.cardID) : res.send({status: 400, message: "Fail"})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router
