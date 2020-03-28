@@ -13,7 +13,7 @@ export const authenticate = (route, data) => {
     return async dispatch => {
         try {
             console.log(process.env.REACT_APP_SERVER)
-            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/auth/${route}`, {
+            const response = await fetch(`/api/auth/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
