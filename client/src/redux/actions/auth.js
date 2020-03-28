@@ -12,7 +12,8 @@ export const toggle = route => {
 export const authenticate = (route, data) => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/auth/${route}`, {
+            console.log(process.env.REACT_APP_SERVER)
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/auth/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {

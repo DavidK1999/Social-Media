@@ -3,7 +3,7 @@ import * as UserActionTypes from '../actionTypes/user'
 export const getProfile = username => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/user/profile${username}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/user/profile${username}`, {
                 headers: {
                     'auth-token': window.sessionStorage.token
                 }
@@ -21,7 +21,7 @@ export const likeProfile = username => {
     return async dispatch => {
         try {
             console.log(username)
-            const response = await fetch(`http://localhost:8000/api/user/like/${username}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/user/like/${username}`, {
                 method: 'PUT',
                 headers: {
                     'auth-token': window.sessionStorage.token
@@ -41,7 +41,7 @@ export const followProfile = username => {
     return async (dispatch, getState) => {
         try {
             console.log(username)
-            const response = await fetch(`http://localhost:8000/api/user/follow/${username}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/user/follow/${username}`, {
                 method: 'PUT',
                 headers: {
                     'auth-token':window.sessionStorage.token,
@@ -59,7 +59,7 @@ export const followProfile = username => {
 export const followedProfile = username => {
     return async (dispatch, getState) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/user/followed/${username}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/user/followed/${username}`, {
                 method: 'PUT',
                 headers: {
                     'auth-token':window.sessionStorage.token,

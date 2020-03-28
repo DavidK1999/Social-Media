@@ -3,7 +3,7 @@ import * as CardActionTypes from '../actionTypes/card'
 export const post = (data, route) => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/${route}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/${route}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -22,7 +22,7 @@ export const post = (data, route) => {
 export const getPosts = () => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/all`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/all`, {
                 headers: {
                     'auth-token' : window.sessionStorage.token
                 }
@@ -39,7 +39,7 @@ export const getPosts = () => {
 export const getPersonalPosts = () => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/personal`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/personal`, {
                 headers: {
                     'auth-token' : window.sessionStorage.token
                 }
@@ -56,7 +56,7 @@ export const getPersonalPosts = () => {
 export const getProfilePosts = profile => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/profile/${profile}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/profile/${profile}`, {
                 headers: {
                     'auth-token' : window.sessionStorage.token
                 }
@@ -73,7 +73,7 @@ export const getProfilePosts = profile => {
 export const getLikedPosts = profile => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/likes/${profile}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/likes/${profile}`, {
                 headers: {
                     'auth-token': window.sessionStorage.token
                 }
@@ -90,7 +90,7 @@ export const getLikedPosts = profile => {
 export const getTaggedPosts = tag => {
     return async dispatch => {
         try {
-            const response = await fetch(`http://localhost:8000/api/card/tagged/${tag}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/tagged/${tag}`, {
                 headers: {
                     'auth-token': window.sessionStorage.token
                 }
@@ -108,7 +108,7 @@ export const upvotePost = post => {
     return async dispatch => {
         try {
             console.log(post)
-            const response = await fetch(`http://localhost:8000/api/card/upvote/${post}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER}/api/card/upvote/${post}`, {
                 method: 'PUT',
                 headers: {
                     'auth-token': window.sessionStorage.token
