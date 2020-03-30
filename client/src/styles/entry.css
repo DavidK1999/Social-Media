@@ -140,3 +140,31 @@
     margin-top: 1%;
     width: 50%;
 }
+
+@media(min-width: 1650px) {
+    #entry-form {
+        width: 65%;
+        justify-content: space-evenly;
+    }
+    
+    #description {
+        margin-bottom: 5%;
+    }
+}
+
+@media(max-width: 1650px) {
+    #entry-form {
+        flex-direction: column;
+        width: 65%;
+        justify-content: space-evenly;
+        margin-bottom: 0%;
+    }
+
+    #entry-grid #right-column-bottom-row {
+        padding: 0.5rem;
+        height: 50%;
+        width: 100%;
+        justify-content: center;
+    }
+
+}
